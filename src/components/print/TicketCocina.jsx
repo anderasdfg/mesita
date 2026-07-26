@@ -20,10 +20,6 @@ export const TicketCocina = React.memo(() => {
   const menuItems = items.filter(item => item.type === PRODUCT_TYPE.MENU);
   const cartaItems = items.filter(item => item.type === PRODUCT_TYPE.CARTA);
 
-  const menuNames = menuItems.reduce((acc, item) => {
-    acc[item.menuName] = (acc[item.menuName] || 0) + item.quantity;
-    return acc;
-  }, {});
   const entradas = menuItems.reduce((acc, item) => {
     if (item.selectedEntrada?.name) {
       acc[item.selectedEntrada.name] = (acc[item.selectedEntrada.name] || 0) + item.quantity;
@@ -32,41 +28,24 @@ export const TicketCocina = React.memo(() => {
   }, {});
   const segundos = menuItems.reduce((acc, item) => {
     if (item.selectedSegundo?.name) {
-      acc[item.selectedSegundo.name] = (acc[item.selectedSegundo.name] || 0) + item.quantity;
-    }
-    return acc;
-  }, {});
-  const cartas = cartaItems.reduce((acc, item) => {
-    acc[item.productName] = (acc[item.productName] || 0) + item.quantity;
-    return acc;
-  }, {});
-
-  const menuNotes = menuItems.reduce((acc, item) => {
-    if (item.notes?.trim()) {
-      const entrada = item.selectedEntrada?.name || '';
-      const segundo = item.selectedSegundo?.name || '';
-      const note = item.notes.trim();
-      const key = `${entrada}|${segundo}|${note}`;
-      const existing = acc.find(n => n.key === key);
-      if (existing) {
-        existing.qty += item.quantity;
-      } else {
-        acc.push({ key, entrada, segundo, note, qty: item.quantity });
+      const name = item.selectedSegundo.name;
+      if (!acc[name]) acc[name] = { qty: 0, notes: {} };
+      acc[name].qty += item.quantity;
+      if (item.notes?.trim()) {
+        const note = item.notes.trim();
+        acc[name].notes[note] = (acc[name].notes[note] || 0) + item.quantity;
       }
     }
     return acc;
-  }, []);
-
-  const cartaNotes = cartaItems.reduce((acc, item) => {
-    if (item.notes?.trim()) {
-      const note = item.notes.trim();
-      const key = `${item.productName}|${note}`;
-      const existing = acc.find(n => n.key === key);
-      if (existing) {
-        existing.qty += item.quantity;
-      } else {
-        acc.push({ key, product: item.productName, note, qty: item.quantity });
-      }
+  }, {});
+  const cartaGroups = cartaItems.reduce((acc, item) => {
+    const note = item.notes?.trim() || '';
+    const key = `${item.productName}|${note}`;
+    const existing = acc.find(g => g.key === key);
+    if (existing) {
+      existing.qty += item.quantity;
+    } else {
+      acc.push({ key, name: item.productName, note, qty: item.quantity });
     }
     return acc;
   }, []);
@@ -100,24 +79,20 @@ export const TicketCocina = React.memo(() => {
           )}
           {Object.keys(segundos).length > 0 && (
             <div>
-              {Object.entries(segundos).map(([name, qty]) => (
-                <div key={name} style={{ fontSize: '22px' }}>
-                  {qty}x {name}
-                </div>
-              ))}
-            </div>
-          )}
-          {menuNotes.length > 0 && (
-            <div style={{ marginTop: '3mm' }}>
-              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>NOTAS</div>
-              {menuNotes.map((n, idx) => (
-                <div>
-                  <div key={idx} style={{ fontSize: '15px', fontStyle: 'italic' }}>
-                    {n.qty}x {n.entrada} / {n.segundo}
+              {Object.entries(segundos).map(([name, data]) => (
+                <div key={name}>
+                  <div style={{ fontSize: '22px' }}>
+                    {data.qty}x {name}
                   </div>
-                  <div key={idx} style={{ fontSize: '22px', fontStyle: 'italic' }}>
-                     {n.note}
-                  </div>
+                  {Object.keys(data.notes).length > 0 && (
+                    <div style={{ paddingLeft: '5mm' }}>
+                      {Object.entries(data.notes).map(([note]) => (
+                        <div key={note} style={{ fontSize: '22px', fontStyle: 'italic' }}>
+                          {note}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -125,24 +100,21 @@ export const TicketCocina = React.memo(() => {
         </div>
       )}
 
-      {Object.keys(cartas).length > 0 && (
+      {cartaGroups.length > 0 && (
         <div style={{ marginBottom: '5mm' }}>
           <div style={{ fontWeight: 'bold', fontSize: '22px', marginBottom: '2mm' }}>CARTA</div>
-          {Object.entries(cartas).map(([name, qty]) => (
-            <div key={name} style={{ fontSize: '22px' }}>
-              {qty}x {name}
+          {cartaGroups.map(g => (
+            <div key={g.key}>
+              <div style={{ fontSize: '22px' }}>
+                {g.qty}x {g.name}
+              </div>
+              {g.note && (
+                <div style={{ paddingLeft: '5mm', fontSize: '22px', fontStyle: 'italic' }}>
+                  {g.note}
+                </div>
+              )}
             </div>
           ))}
-          {cartaNotes.length > 0 && (
-            <div style={{ marginTop: '3mm' }}>
-              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>NOTAS</div>
-              {cartaNotes.map((n, idx) => (
-                <div key={idx} style={{ fontSize: '22px', fontStyle: 'italic' }}>
-                  {n.qty}x {n.product}: {n.note}
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       )}
 
