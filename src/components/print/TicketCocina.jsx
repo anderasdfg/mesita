@@ -19,27 +19,27 @@ export const TicketCocina = React.memo(() => {
 
   return (
     <div id="seccion-ticket-cocina" style={{ display: 'none' }}>
-      <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '24px', marginBottom: '5mm' }}>
+      <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '32px', marginBottom: '3mm' }}>
         COMANDA - COCINA
       </div>
 
-      <div style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '5mm' }}>
+      <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '3mm' }}>
         <div>MESA: {mesaNumber}</div>
         <div>HORA: {formatTime(now)}</div>
       </div>
 
-      <div style={{ borderTop: '3px solid #000', marginBottom: '5mm' }}></div>
+      <div style={{ borderTop: '4px solid #000', marginBottom: '3mm' }}></div>
 
       {items.map((item, idx) => (
-        <div key={idx} style={{ marginBottom: '8mm', fontSize: '18px' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
+        <div key={idx} style={{ marginBottom: '5mm', fontSize: '22px' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '28px' }}>
             {item.quantity}x {item.type === PRODUCT_TYPE.MENU 
               ? item.menuName 
               : item.productName}
           </div>
           
           {item.type === PRODUCT_TYPE.MENU && (
-            <div style={{ paddingLeft: '8mm', fontSize: '18px', marginTop: '2mm' }}>
+            <div style={{ paddingLeft: '5mm', fontSize: '22px', marginTop: '1mm' }}>
               <div>• {item.selectedEntrada?.name}</div>
               <div>• {item.selectedSegundo?.name}</div>
             </div>
@@ -47,12 +47,12 @@ export const TicketCocina = React.memo(() => {
           
           {item.notes && (
             <div style={{ 
-              paddingLeft: '8mm', 
+              paddingLeft: '5mm', 
               fontStyle: 'italic', 
-              fontSize: '16px',
-              marginTop: '3mm',
-              padding: '3mm',
-              border: '2px dashed #000'
+              fontSize: '20px',
+              marginTop: '2mm',
+              padding: '2mm',
+              border: '3px dashed #000'
             }}>
               NOTA: {item.notes}
             </div>
@@ -60,8 +60,8 @@ export const TicketCocina = React.memo(() => {
         </div>
       ))}
 
-      <div style={{ borderTop: '3px solid #000', marginTop: '8mm', paddingTop: '5mm' }}>
-        <div style={{ textAlign: 'center', fontSize: '16px' }}>
+      <div style={{ borderTop: '4px solid #000', marginTop: '5mm', paddingTop: '3mm' }}>
+        <div style={{ textAlign: 'center', fontSize: '22px', fontWeight: 'bold' }}>
           Total items: {items.reduce((sum, item) => sum + item.quantity, 0)}
         </div>
       </div>
