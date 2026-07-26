@@ -10,10 +10,15 @@ export const CartView = React.memo(() => {
   const { tables, setActiveView, selectTable } = useOrder();
   const [expandedTable, setExpandedTable] = useState(null);
 
+  console.log('🔍 CartView - Total tables:', tables.length);
+  console.log('📋 All tables:', tables.map(t => ({ id: t.id, number: t.number, status: t.status, hasOrder: !!t.order })));
+
   // Obtener todas las mesas con pedidos activos
   const activeTables = tables.filter(
     table => table.status === TABLE_STATUS.OCCUPIED || table.status === TABLE_STATUS.WAITING_PAYMENT
   );
+
+  console.log('✅ Active tables:', activeTables.length, activeTables.map(t => ({ number: t.number, status: t.status })));
 
   const handleAddItems = (table) => {
     selectTable(table.id);
