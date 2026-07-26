@@ -6,62 +6,49 @@ const STORAGE_KEY = 'menus';
 
 const defaultMenus = [
   {
-    id: 'menu-15',
-    type: 'MENU',
-    name: 'Menú Ejecutivo S/15',
-    price: 15.00,
-    active: true,
-    entradas: [
-      { id: 'm15-e1', name: 'Ensalada César' },
-      { id: 'm15-e2', name: 'Sopa Criolla' },
-      { id: 'm15-e3', name: 'Causa Limeña' }
-    ],
-    segundos: [
-      { id: 'm15-s1', name: 'Pollo a la Brasa' },
-      { id: 'm15-s2', name: 'Pescado Frito' },
-      { id: 'm15-s3', name: 'Lomo Saltado' },
-      { id: 'm15-s4', name: 'Arroz con Pollo' },
-      { id: 'm15-s5', name: 'Tallarines Rojos' }
-    ],
-    createdAt: Date.now()
-  },
-  {
-    id: 'menu-17',
-    type: 'MENU',
-    name: 'Menú Premium S/17',
-    price: 17.00,
-    active: true,
-    entradas: [
-      { id: 'm17-e1', name: 'Papa a la Huancaína' },
-      { id: 'm17-e2', name: 'Crema de Espárragos' },
-      { id: 'm17-e3', name: 'Ensalada Mixta' }
-    ],
-    segundos: [
-      { id: 'm17-s1', name: 'Pollo a la Plancha' },
-      { id: 'm17-s2', name: 'Filete de Pescado' },
-      { id: 'm17-s3', name: 'Bistec a lo Pobre' },
-      { id: 'm17-s4', name: 'Ceviche Mixto' },
-      { id: 'm17-s5', name: 'Arroz Chaufa' }
-    ],
-    createdAt: Date.now()
-  },
-  {
     id: 'menu-20',
     type: 'MENU',
-    name: 'Menú Especial S/20',
+    name: 'Menú S/20',
     price: 20.00,
     active: true,
     entradas: [
-      { id: 'm20-e1', name: 'Tiradito' },
-      { id: 'm20-e2', name: 'Anticuchos' },
-      { id: 'm20-e3', name: 'Conchas a la Parmesana' }
+      { id: 'm20-e1', name: 'Chupe de Camarones' },
+      { id: 'm20-e2', name: 'Tequeños' },
+      { id: 'm20-e3', name: 'Huancaína' }
     ],
     segundos: [
-      { id: 'm20-s1', name: 'Chuletón a la Parrilla' },
-      { id: 'm20-s2', name: 'Camarones al Ajillo' },
-      { id: 'm20-s3', name: 'Pato a la Naranja' },
-      { id: 'm20-s4', name: 'Filete de Salmón' },
-      { id: 'm20-s5', name: 'Lomo Saltado Especial' }
+      { id: 'm20-s1', name: 'Saltado de Pollo' },
+      { id: 'm20-s2', name: 'Chaufa de Pollo' },
+      { id: 'm20-s3', name: 'Seco con Frejoles' },
+      { id: 'm20-s4', name: 'Sopa Seca de Pollo con Carapulcra' },
+      { id: 'm20-s5', name: 'Sopa Seca de Chancho con Carapulcra' },
+      { id: 'm20-s6', name: 'Chaufa de Camarones' },
+      { id: 'm20-s7', name: 'Trucha Frita' },
+      { id: 'm20-s8', name: 'Milanesa de Pollo' },
+      { id: 'm20-s9', name: 'Pollo Frito' },
+      { id: 'm20-s10', name: 'Chicharrón de Pollo' }
+    ],
+    createdAt: Date.now()
+  },
+  {
+    id: 'menu-25',
+    type: 'MENU',
+    name: 'Menú S/25',
+    price: 25.00,
+    active: true,
+    entradas: [
+      { id: 'm25-e1', name: 'Chupe de Camarones' },
+      { id: 'm25-e2', name: 'Tequeños' },
+      { id: 'm25-e3', name: 'Huancaína' }
+    ],
+    segundos: [
+      { id: 'm25-s1', name: 'Sopa Seca de Camarones con Carapulcra' },
+      { id: 'm25-s2', name: 'Chicharrón de Trucha' },
+      { id: 'm25-s3', name: 'Chicharrón de Camarones' },
+      { id: 'm25-s4', name: 'Arroz con Pato' },
+      { id: 'm25-s5', name: 'Cuy Frito' },
+      { id: 'm25-s6', name: 'Cuy Chactado' },
+      { id: 'm25-s7', name: 'Picante de Cuy' }
     ],
     createdAt: Date.now()
   }

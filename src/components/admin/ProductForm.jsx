@@ -9,7 +9,7 @@ export const ProductForm = React.memo(({ item, onClose }) => {
   const { addProduct, editProduct } = useOrder();
   const [formData, setFormData] = useState({
     name: '',
-    category: CARTA_CATEGORY.POLLO,
+    category: CARTA_CATEGORY.POLLOS,
     price: '',
     description: '',
     active: true
@@ -21,7 +21,7 @@ export const ProductForm = React.memo(({ item, onClose }) => {
     if (item) {
       setFormData({
         name: item.name || '',
-        category: item.category || CARTA_CATEGORY.POLLO,
+        category: item.category || CARTA_CATEGORY.POLLOS,
         price: item.price || '',
         description: item.description || '',
         active: item.active !== false

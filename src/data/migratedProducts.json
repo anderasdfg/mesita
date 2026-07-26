@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "p1",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "ENSALADA MIXTA",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p2",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "AGUA CIELO CHUPON",
+    "price": 3.5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p3",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "HEINEKEN BOTELLA",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p4",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "PORCION DE QUESO FRITO",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p5",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "PAPEL HIGIENICO",
+    "price": 1.5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p6",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "DESAYUNO ENERGETICO",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p7",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "DESAYUNO AMERICANO",
+    "price": 20,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p8",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "DESAYUNO REGIONAL",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p9",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "CIELO LIMON / NARANJA / MANZANA",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p10",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "KR PIÑA / PEPSI / GUARANÁ",
+    "price": 2,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p11",
+    "type": "CARTA",
+    "category": "GALLETAS",
+    "name": "GALLETA DE SODA",
+    "price": 1,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p12",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "CABLE TIPO C",
+    "price": 5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p13",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "CARGADOR TIPO C",
+    "price": 18,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189208
+  },
+  {
+    "id": "p14",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "TOALLA HIGIENICA",
+    "price": 1.5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p15",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "SHAMPOO",
+    "price": 2,
+    "description": "SHAMPO SACHET",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p16",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "JABON DE TOCADOR",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p17",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "BLOQUEADOR (SACHET)",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p18",
+    "type": "CARTA",
+    "category": "OTROS",
+    "name": "REPELENTE (SACHET)",
+    "price": 2,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p19",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "AGUA MINERAL 1/2 Lt.",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p20",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "HUEVO REVUELTO (UNIDAD)",
+    "price": 2,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189209
+  },
+  {
+    "id": "p21",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "TAPER",
+    "price": 1,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p22",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "PAPAS FRITAS (PORCION)",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p23",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "HUEVO FRITO (UNIDAD)",
+    "price": 2,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p24",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "HUEVO SANCOCHADO (UNIDAD)",
+    "price": 1.5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p25",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "CAMOTE FRITO (PORCION)",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p26",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "PORCION DE ARROZ",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p27",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "YUCAS FRITAS (PORCION)",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p28",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "YUCA SANCOCHADA (PORCION)",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p29",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "CHUPE DE CAMARONES - ADICIONAL",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p30",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "HUANCAINA",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p31",
+    "type": "CARTA",
+    "category": "GUARNICIONES",
+    "name": "TEQUEÑOS",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p32",
+    "type": "CARTA",
+    "category": "BEBIDAS",
+    "name": "LIMONADA DE FRUTOS ROJOS",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p33",
+    "type": "CARTA",
+    "category": "BEBIDAS",
+    "name": "CEBADA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189210
+  },
+  {
+    "id": "p34",
+    "type": "CARTA",
+    "category": "BEBIDAS",
+    "name": "CHICHA MORADA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p35",
+    "type": "CARTA",
+    "category": "BEBIDAS",
+    "name": "MARACUYA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p36",
+    "type": "CARTA",
+    "category": "BEBIDAS",
+    "name": "LIMONADA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p37",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "VINO SEMISECO",
+    "price": 20,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p38",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "VINO BLANCO",
+    "price": 20,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p39",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "HEINEKEN PERSONAL (LATA)",
+    "price": 7,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p40",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "GOLDEN PERSONAL (LATA)",
+    "price": 6,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p41",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "CUZQUEÑA NEGRA",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p42",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "CUZQUEÑA TRIGO",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p43",
+    "type": "CARTA",
+    "category": "CERVEZAS",
+    "name": "PILSEN",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p44",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "3 Lt. INKA / COCA (DESCARTABLE)",
+    "price": 20,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189211
+  },
+  {
+    "id": "p45",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "1 Lt. 1/2 INKA / COCA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p46",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "1 Lt. INKA / COCA",
+    "price": 13,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p47",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "GORDITA / JUMBO",
+    "price": 6,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p48",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "1/2 LITRO INKA / COCA (DESCARTABLE)",
+    "price": 5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p49",
+    "type": "CARTA",
+    "category": "GASEOSAS",
+    "name": "PERSONAL INKA / COCA",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p50",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "PECHUGA A LA PLANCHA",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p51",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "CHICHARRON DE POLLO",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p52",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "MILANESA DE POLLO A LO POBRE",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p53",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "MILANESA DE POLLO",
+    "price": 25,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p54",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "POLLO FRITO A LO POBRE",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p55",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "POLLO FRITO",
+    "price": 25,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p56",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "ARROZ CHAUFA DE POLLO A LO POBRE",
+    "price": 25,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p57",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "ARROZ CHAUFA DE POLLO",
+    "price": 22,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p58",
+    "type": "CARTA",
+    "category": "POLLOS",
+    "name": "DIETA DE POLLO",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p59",
+    "type": "CARTA",
+    "category": "PATO",
+    "name": "SECO DE PATO CON FREJOLES",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p60",
+    "type": "CARTA",
+    "category": "CAJA_CHINA",
+    "name": "FREJOL A LA CAJA CHINA",
+    "price": 40,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p61",
+    "type": "CARTA",
+    "category": "CAJA_CHINA",
+    "name": "RONDA CRIOLLA A LA CAJA CHINA",
+    "price": 45,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p62",
+    "type": "CARTA",
+    "category": "CAJA_CHINA",
+    "name": "SOPA SECA CON CARAPULCRA A LA CAJA CHINA",
+    "price": 40,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p63",
+    "type": "CARTA",
+    "category": "CAJA_CHINA",
+    "name": "CHANCHO A LA CAJA CHINA",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p64",
+    "type": "CARTA",
+    "category": "RONDA_CRIOLLA",
+    "name": "SOPA SECA / ARROZ CON PATO / CARAPULCRA",
+    "price": 40,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p65",
+    "type": "CARTA",
+    "category": "PESCADO",
+    "name": "DUO MARINO",
+    "price": 45,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p66",
+    "type": "CARTA",
+    "category": "PESCADO",
+    "name": "JALEA DE PESCADO",
+    "price": 45,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p67",
+    "type": "CARTA",
+    "category": "PESCADO",
+    "name": "CHICHARRON DE PESCADO",
+    "price": 45,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p68",
+    "type": "CARTA",
+    "category": "PESCADO",
+    "name": "CEVICHE DE PESCADO",
+    "price": 40,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p69",
+    "type": "CARTA",
+    "category": "TRUCHAS",
+    "name": "DUO DINAMICO DE TRUCHA",
+    "price": 45,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p70",
+    "type": "CARTA",
+    "category": "TRUCHAS",
+    "name": "CEVICHE DE TRUCHA",
+    "price": 38,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p71",
+    "type": "CARTA",
+    "category": "TRUCHAS",
+    "name": "CHICHARRON DE TRUCHA",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p72",
+    "type": "CARTA",
+    "category": "TRUCHAS",
+    "name": "TRUCHA AL AJO",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p73",
+    "type": "CARTA",
+    "category": "TRUCHAS",
+    "name": "TRUCHA FRITA",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p74",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CHICHARRON DE CUY (MITAD)",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p75",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CHICHARRON DE CUY (ENTERO)",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p76",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "PICANTE DE CUY (MITAD)",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p77",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "PICANTE DE CUY (ENTERO)",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p78",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CUY CHACTADO (MITAD)",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p79",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CUY CHACTADO (ENTERO)",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p80",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CUY FRITO (MITAD)",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p81",
+    "type": "CARTA",
+    "category": "CUYES",
+    "name": "CUY FRITO (ENTERO",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p82",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "BISTECK A LO POBRE",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p83",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "BISTECK",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p84",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "LOMO SALTADO A LO POBRE",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p85",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "LOMO SALTADO",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p86",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "SOPA A LA MINUTA",
+    "price": 20,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p87",
+    "type": "CARTA",
+    "category": "CARNES",
+    "name": "SUSTANCIA DE RES",
+    "price": 18,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p88",
+    "type": "CARTA",
+    "category": "GALLINA",
+    "name": "SOPA SECA DE CAMARONES CON CARAPULCRA",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p89",
+    "type": "CARTA",
+    "category": "GALLINA",
+    "name": "SOPA SECA DE CHANCHO CON CARAPULCRA",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p90",
+    "type": "CARTA",
+    "category": "GALLINA",
+    "name": "SOPA SECA DE GALLINA CON CARAPULCRA",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p91",
+    "type": "CARTA",
+    "category": "GALLINA",
+    "name": "SOPA SECA DE POLLO CON CARAPULCRA",
+    "price": 25,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p92",
+    "type": "CARTA",
+    "category": "GALLINA",
+    "name": "CALDO DE GALLINA",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p93",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "SOPA SECA DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p94",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "CHAUFA DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p95",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "CAMARONES AL AJO",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p96",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "CAMARONES AL JUGO",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p97",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "CHICHARRONES DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p98",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "PICANTE DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p99",
+    "type": "CARTA",
+    "category": "SANDWICH",
+    "name": "PAN SOLO",
+    "price": 0.5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p100",
+    "type": "CARTA",
+    "category": "CAMARONES",
+    "name": "CHUPE DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p101",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE PAPAYA CON NARANJA",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p102",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE PLATANO CON LECHE",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p103",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE FRESA CON LECHE",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p104",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO ESPECIAL",
+    "price": 12,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p105",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO SURTIDO",
+    "price": 10,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p106",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE NARANJA",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p107",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE PIÑA CON PAPAYA",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p108",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE PIÑA",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p109",
+    "type": "CARTA",
+    "category": "JUGOS",
+    "name": "JUGO DE PAPAYA",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p110",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "LECHE SOLA",
+    "price": 6,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p111",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "CAFE CON LECHE",
+    "price": 6,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189212
+  },
+  {
+    "id": "p112",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "CAFE PASADO",
+    "price": 5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p113",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "MANZANILLA",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p114",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "ANIS",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p115",
+    "type": "CARTA",
+    "category": "INFUSIONES",
+    "name": "TE",
+    "price": 3,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p116",
+    "type": "CARTA",
+    "category": "SANDWICH",
+    "name": "SANDWICH DE HUEVO",
+    "price": 4,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p117",
+    "type": "CARTA",
+    "category": "SANDWICH",
+    "name": "SANDWICH DE QUESO",
+    "price": 4,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p118",
+    "type": "CARTA",
+    "category": "SANDWICH",
+    "name": "SANDWICH DE POLLO",
+    "price": 5,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p119",
+    "type": "CARTA",
+    "category": "SANDWICH",
+    "name": "SANDWICH DE CHICHARRON C/ CAMOTE",
+    "price": 8,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p120",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "TORTILLA DE CAMARONES",
+    "price": 50,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p121",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "LOMITO AL JUGO",
+    "price": 28,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p122",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "QUESO FRITO CON YUCAS FRITAS",
+    "price": 15,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p123",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "CHICHARRON DE CHANCHO (1 PORCIÓN)",
+    "price": 30,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p124",
+    "type": "CARTA",
+    "category": "DESAYUNOS",
+    "name": "TAMALES DE CHANCHO",
+    "price": 10,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  },
+  {
+    "id": "p125",
+    "type": "CARTA",
+    "category": "PATO",
+    "name": "ARROZ CON PATO",
+    "price": 35,
+    "description": "",
+    "active": true,
+    "createdAt": 1785085189213
+  }
+]
