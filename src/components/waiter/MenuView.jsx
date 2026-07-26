@@ -5,6 +5,7 @@ import { CategoryFilter } from '../common/CategoryFilter';
 import { MenuSelector } from './MenuSelector';
 import { PRODUCT_TYPE, CARTA_CATEGORY, CARTA_CATEGORY_LABELS } from '../../utils/constants';
 import { formatCurrency } from '../../utils/formatters';
+import { searchIncludes } from '../../utils/stringUtils';
 
 const categoryMap = {
   'all': null,
@@ -49,13 +50,12 @@ export const MenuView = React.memo(() => {
       items = products.filter(product => product.category === category);
     }
     
-    // Filtrar por término de búsqueda (case-insensitive)
+    // Filtrar por término de búsqueda (case-insensitive e ignora tildes)
     if (searchTerm.trim()) {
-      const search = searchTerm.toLowerCase();
       items = items.filter(item => {
-        const name = item.name?.toLowerCase() || '';
-        const description = item.description?.toLowerCase() || '';
-        return name.includes(search) || description.includes(search);
+        const name = item.name || '';
+        const description = item.description || '';
+        return searchIncludes(name, searchTerm) || searchIncludes(description, searchTerm);
       });
     }
     
