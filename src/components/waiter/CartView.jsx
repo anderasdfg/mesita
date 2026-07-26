@@ -7,10 +7,11 @@ import { calculateCartTotal } from '../../utils/priceCalculator';
 import { PRODUCT_TYPE, TABLE_STATUS } from '../../utils/constants';
 
 export const CartView = React.memo(() => {
-  const { tables, setActiveView, selectTable } = useOrder();
+  const { tables, setActiveView, selectTable, cartItems, confirmOrder, selectedTable, currentTable } = useOrder();
   const [expandedTable, setExpandedTable] = useState(null);
+  const [showAllOrders, setShowAllOrders] = useState(false);
 
-  console.log('🔍 CartView - Total tables:', tables.length);
+  console.log('🔍 CartView - Cart items:', cartItems.length, 'Selected table:', selectedTable);
   console.log('📋 All tables:', tables.map(t => ({ id: t.id, number: t.number, status: t.status, hasOrder: !!t.order })));
 
   // Obtener todas las mesas con pedidos activos
@@ -19,6 +20,9 @@ export const CartView = React.memo(() => {
   );
 
   console.log('✅ Active tables:', activeTables.length, activeTables.map(t => ({ number: t.number, status: t.status })));
+
+  const total = calculateCartTotal(cartItems);
+  const canConfirm = selectedTable && cartItems.length > 0;
 
   const handleAddItems = (table) => {
     selectTable(table.id);
@@ -43,6 +47,66 @@ export const CartView = React.memo(() => {
     return item.productName;
   };
 
+  // Si hay items en el carrito, mostrar el carrito temporal
+  if (cartItems.length > 0) {
+    return (
+      <div className="p-4 pb-32 lg:pb-4">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-2xl font-bold">Pedido Actual</h1>
+          <span className="text-lg font-medium text-gray-600">
+            Mesa {currentTable?.number || '-'}
+          </span>
+        </div>
+
+        <div className="space-y-3 mb-6">
+          {cartItems.map(item => {
+            const displayName = item.type === PRODUCT_TYPE.MENU
+              ? `${item.menuName}: ${item.selectedEntrada.name} + ${item.selectedSegundo.name}`
+              : item.productName;
+
+            return (
+              <div key={item.id} className="bg-white rounded-xl shadow p-4">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-sm">{displayName}</h3>
+                    <p className="text-sm text-gray-600">{formatCurrency(item.unitPrice)} c/u</p>
+                  </div>
+                </div>
+                <div className="text-lg font-semibold">Cantidad: {item.quantity}</div>
+                {item.notes && (
+                  <div className="mt-2 p-2 bg-gray-100 rounded text-sm italic">
+                    Nota: {item.notes}
+                  </div>
+                )}
+                <div className="mt-2 text-right">
+                  <span className="text-lg font-bold">{formatCurrency(item.subtotal)}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="bg-white rounded-xl shadow p-4 mb-6">
+          <div className="flex justify-between text-xl font-bold">
+            <span>Total:</span>
+            <span className="text-blue-600">{formatCurrency(total)}</span>
+          </div>
+        </div>
+
+        <Button
+          variant="success"
+          size="lg"
+          onClick={confirmOrder}
+          disabled={!canConfirm}
+          className="w-full"
+        >
+          Confirmar Pedido
+        </Button>
+      </div>
+    );
+  }
+
+  // Si no hay items en el carrito, mostrar todos los pedidos confirmados
   return (
     <div className="p-4 pb-32 lg:pb-4">
       <div className="flex items-center justify-between mb-6">
