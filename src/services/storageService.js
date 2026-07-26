@@ -1,4 +1,4 @@
-const createDelay = (ms = 200) => new Promise(resolve => setTimeout(resolve, ms));
+const createDelay = (ms = 10) => new Promise(resolve => setTimeout(resolve, ms));
 
 export const getItem = async (key, defaultValue = null) => {
   await createDelay();
@@ -15,10 +15,12 @@ export const getItem = async (key, defaultValue = null) => {
 export const setItem = async (key, value) => {
   await createDelay();
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    const jsonValue = JSON.stringify(value);
+    localStorage.setItem(key, jsonValue);
+    console.log(`✅ Saved to localStorage [${key}]:`, value);
     return value;
   } catch (error) {
-    console.error(`Error writing ${key} to storage:`, error);
+    console.error(`❌ Error writing ${key} to storage:`, error);
     throw error;
   }
 };
