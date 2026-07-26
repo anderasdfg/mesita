@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test LocalStorage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test de LocalStorage</h1>
+    
+    <div>
+        <button onclick="testWrite()">✍️ Escribir en LocalStorage</button>
+        <button onclick="testRead()">📖 Leer de LocalStorage</button>
+        <button onclick="clearStorage()">🗑️ Limpiar LocalStorage</button>
+    </div>
+    
+    <h2>Resultado:</h2>
+    <div id="result"></div>
+    
+    <h2>Contenido de LocalStorage:</h2>
+    <pre id="storage"></pre>
+
+    <script>
+        function log(message, isError = false) {
+            const result = document.getElementById('result');
+            result.innerHTML += `<p class="${isError ? 'error' : 'success'}">${message}</p>`;
+        }
+
+        function showStorage() {
+            const storage = document.getElementById('storage');
+            const data = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                data[key] = JSON.parse(localStorage.getItem(key) || 'null');
+            }
+            storage.textContent = JSON.stringify(data, null, 2);
+        }
+
+        function testWrite() {
+            document.getElementById('result').innerHTML = '';
+            try {
+                const testData = {
+                    timestamp: Date.now(),
+                    message: 'Test desde Vercel',
+                    random: Math.random()
+                };
+                localStorage.setItem('test', JSON.stringify(testData));
+                log('✅ Escritura exitosa!');
+                showStorage();
+            } catch (error) {
+                log('❌ Error al escribir: ' + error.message, true);
+            }
+        }
+
+        function testRead() {
+            document.getElementById('result').innerHTML = '';
+            try {
+                const data = localStorage.getItem('test');
+                if (data) {
+                    log('✅ Lectura exitosa: ' + data);
+                } else {
+                    log('⚠️ No hay datos guardados', true);
+                }
+                showStorage();
+            } catch (error) {
+                log('❌ Error al leer: ' + error.message, true);
+            }
+        }
+
+        function clearStorage() {
+            document.getElementById('result').innerHTML = '';
+            localStorage.clear();
+            log('🗑️ LocalStorage limpiado');
+            showStorage();
+        }
+
+        // Mostrar storage al cargar
+        showStorage();
+    </script>
+</body>
+</html>
