@@ -12,7 +12,9 @@ export const TablesView = React.memo(() => {
   const { tables, selectTable, setActiveView } = useOrder();
 
   const handleTableClick = (table) => {
+    console.log('🖱️ Table clicked:', { id: table.id, number: table.number, status: table.status });
     selectTable(table.id);
+    console.log('📍 Table selected, navigating to menu');
     setActiveView('menu');
   };
 

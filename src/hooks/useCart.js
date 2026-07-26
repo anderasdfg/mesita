@@ -12,7 +12,13 @@ export const useCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = useCallback((item) => {
-    setCartItems(prev => [...prev, createItem(item)]);
+    const newItem = createItem(item);
+    console.log('🛒 Adding to cart:', newItem);
+    setCartItems(prev => {
+      const updated = [...prev, newItem];
+      console.log('📦 Cart updated, total items:', updated.length);
+      return updated;
+    });
   }, []);
 
   const updateQuantity = useCallback((itemId, quantity) => {
@@ -37,6 +43,7 @@ export const useCart = () => {
   }, []);
 
   const clearCart = useCallback(() => {
+    console.log('🗑️ Clearing cart');
     setCartItems([]);
   }, []);
 
