@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import * as productService from '../services/productService';
+import * as productService from '../services/supabase/productService';
 
 export const useProducts = (onlyActive = false) => {
   const [products, setProducts] = useState([]);
@@ -26,7 +26,7 @@ export const useProducts = (onlyActive = false) => {
   const addProduct = async (productData) => {
     setLoading(true);
     try {
-      const newProduct = await productService.createProduct(productData);
+      const newProduct = await productService.addProduct(productData);
       await fetchProducts();
       return newProduct;
     } catch (err) {
@@ -54,7 +54,7 @@ export const useProducts = (onlyActive = false) => {
   const toggleProduct = async (id) => {
     setLoading(true);
     try {
-      const updated = await productService.toggleProductStatus(id);
+      const updated = await productService.toggleProductAvailability(id);
       await fetchProducts();
       return updated;
     } catch (err) {

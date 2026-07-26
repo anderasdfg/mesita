@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import * as orderService from '../services/orderService';
+import * as orderService from '../services/supabase/tableService';
 
 export const useTables = () => {
   const [tables, setTables] = useState([]);

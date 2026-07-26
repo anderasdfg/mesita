@@ -9,7 +9,7 @@ const statusConfig = {
 };
 
 export const TablesView = React.memo(() => {
-  const { tables, selectTable, setActiveView } = useOrder();
+  const { tables, selectTable, setActiveView, loading, error } = useOrder();
 
   const handleTableClick = (table) => {
     console.log('🖱️ Table clicked:', { id: table.id, number: table.number, status: table.status });
@@ -17,6 +17,46 @@ export const TablesView = React.memo(() => {
     console.log('📍 Table selected, navigating to menu');
     setActiveView('menu');
   };
+
+  if (loading) {
+    return (
+      <div className="p-4 pb-28 lg:pb-4">
+        <h1 className="text-2xl font-bold mb-4">Seleccionar Mesa</h1>
+        <div className="text-center py-12">
+          <p className="text-gray-500">Cargando mesas...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 pb-28 lg:pb-4">
+        <h1 className="text-2xl font-bold mb-4">Seleccionar Mesa</h1>
+        <div className="text-center py-12">
+          <p className="text-red-500 font-semibold mb-2">Error al cargar mesas</p>
+          <p className="text-sm text-gray-600">{error}</p>
+          <p className="text-xs text-gray-500 mt-4">
+            Verifica que ejecutaste la migración SQL en Supabase
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!tables || tables.length === 0) {
+    return (
+      <div className="p-4 pb-28 lg:pb-4">
+        <h1 className="text-2xl font-bold mb-4">Seleccionar Mesa</h1>
+        <div className="text-center py-12">
+          <p className="text-gray-500 mb-2">No hay mesas configuradas</p>
+          <p className="text-sm text-gray-600">
+            Las mesas se crearán automáticamente al ejecutar la migración SQL
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 pb-28 lg:pb-4">

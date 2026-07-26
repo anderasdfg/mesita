@@ -52,8 +52,9 @@ export const OrderProvider = ({ children }) => {
       amountReceived: received,
       change: Math.max(0, change)
     });
+    clearCart();
     setSelectedTable(null);
-  }, [closeOrder]);
+  }, [closeOrder, clearCart]);
 
   const currentTable = useMemo(() => {
     return tables.find(t => t.id === selectedTable) || null;

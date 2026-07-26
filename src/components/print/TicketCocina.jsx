@@ -19,11 +19,11 @@ export const TicketCocina = React.memo(() => {
 
   return (
     <div id="seccion-ticket-cocina" style={{ display: 'none' }}>
-      <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '32px', marginBottom: '3mm' }}>
+      <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '28px', marginBottom: '3mm' }}>
         COMANDA - COCINA
       </div>
 
-      <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '3mm' }}>
+      <div style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '3mm' }}>
         <div>MESA: {mesaNumber}</div>
         <div>HORA: {formatTime(now)}</div>
       </div>
@@ -32,7 +32,7 @@ export const TicketCocina = React.memo(() => {
 
       {items.map((item, idx) => (
         <div key={idx} style={{ marginBottom: '5mm', fontSize: '22px' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '28px' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
             {item.quantity}x {item.type === PRODUCT_TYPE.MENU 
               ? item.menuName 
               : item.productName}
@@ -49,12 +49,12 @@ export const TicketCocina = React.memo(() => {
             <div style={{ 
               paddingLeft: '5mm', 
               fontStyle: 'italic', 
-              fontSize: '20px',
+              fontSize: '22px',
               marginTop: '2mm',
               padding: '2mm',
               border: '3px dashed #000'
             }}>
-              NOTA: {item.notes}
+              {item.notes}
             </div>
           )}
         </div>

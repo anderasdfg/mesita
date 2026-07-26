@@ -19,13 +19,19 @@ Sistema de gestión de pedidos para restaurantes con interfaz móvil para mozos 
 - **Tailwind CSS** para estilos
 - **Headless UI** para componentes accesibles
 - **Lucide React** para iconos
-- **LocalStorage** para persistencia de datos
+- **Supabase** para base de datos en la nube y sincronización en tiempo real
 
 ## 📦 Instalación
 
 ```bash
 npm install
 ```
+
+## ⚙️ Configuración
+
+1. Copia el archivo `.env.example` a `.env`
+2. Ejecuta la migración SQL en Supabase (ver `SETUP_INSTRUCTIONS.md`)
+3. Verifica que las tablas se crearon correctamente
 
 ## 🏃 Desarrollo
 
@@ -34,6 +40,15 @@ npm run dev
 ```
 
 Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
+
+## 📱 Acceso Multi-Dispositivo
+
+**Caso de uso:** Hacer pedidos desde el celular, imprimir desde la laptop
+
+- **Red Local**: Accede desde `http://TU_IP:5173` en el celular
+- **Nube**: Despliega en Vercel/Netlify para acceso desde cualquier lugar
+
+Ver `SETUP_INSTRUCTIONS.md` para instrucciones detalladas.
 
 ## 🏗️ Build
 

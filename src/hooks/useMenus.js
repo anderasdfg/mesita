@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import * as menuService from '../services/menuService';
+import * as menuService from '../services/supabase/menuService';
 
 export const useMenus = (onlyActive = false) => {
   const [menus, setMenus] = useState([]);
@@ -26,7 +26,7 @@ export const useMenus = (onlyActive = false) => {
   const addMenu = async (menuData) => {
     setLoading(true);
     try {
-      const newMenu = await menuService.createMenu(menuData);
+      const newMenu = await menuService.addMenu(menuData);
       await fetchMenus();
       return newMenu;
     } catch (err) {
@@ -54,7 +54,7 @@ export const useMenus = (onlyActive = false) => {
   const toggleMenu = async (id) => {
     setLoading(true);
     try {
-      const updated = await menuService.toggleMenuStatus(id);
+      const updated = await menuService.toggleMenuAvailability(id);
       await fetchMenus();
       return updated;
     } catch (err) {
