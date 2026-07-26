@@ -16,11 +16,30 @@ export const OrderProvider = ({ children }) => {
 
   const [selectedTable, setSelectedTable] = useState(null);
   const [activeView, setActiveView] = useState('tables');
+  const [isEditingOrder, setIsEditingOrder] = useState(false);
 
   const selectTable = useCallback(async (tableId) => {
     setSelectedTable(tableId);
+    setIsEditingOrder(false);
     // Note: cart loading from existing order can be added here if needed
   }, []);
+
+  const editOrder = useCallback((tableId) => {
+    const table = tables.find(t => t.id === tableId);
+    if (table?.order?.items) {
+      setCartItemsFromOrder(table.order.items);
+      setSelectedTable(tableId);
+      setIsEditingOrder(true);
+      setActiveView('cart');
+    }
+  }, [tables, setCartItemsFromOrder, setActiveView]);
+
+  const cancelEdit = useCallback(() => {
+    clearCart();
+    setIsEditingOrder(false);
+    setSelectedTable(null);
+    setActiveView('tables');
+  }, [clearCart, setActiveView]);
 
   const confirmOrder = useCallback(async () => {
     if (!selectedTable || cartItems.length === 0) {
@@ -29,14 +48,16 @@ export const OrderProvider = ({ children }) => {
     }
 
     try {
-      console.log('📝 Confirming order for table:', selectedTable, 'Items:', cartItems.length);
+      console.log('📝 Confirming order for table:', selectedTable, 'Items:', cartItems.length, 'Replace:', isEditingOrder);
       await updateOrder(selectedTable, {
         items: cartItems,
-        waiter: 'Mozo 1'
+        waiter: 'Mozo 1',
+        replace: isEditingOrder
       });
       console.log('✅ Order confirmed successfully');
       
       clearCart();
+      setIsEditingOrder(false);
       setActiveView('tables');
     } catch (error) {
       console.error('❌ Error confirming order:', error);
@@ -89,7 +110,10 @@ export const OrderProvider = ({ children }) => {
     selectTable,
     // Actions
     confirmOrder,
+    cancelEdit,
     processPayment,
+    editOrder,
+    isEditingOrder,
     // Admin
     addProduct,
     editProduct,
@@ -106,7 +130,7 @@ export const OrderProvider = ({ children }) => {
   }), [
     menus, products, tables, cartItems, selectedTable, currentTable, activeView, loading, error,
     cartTotal, addToCart, updateQuantity, updateNotes, removeFromCart, clearCart, setCartItemsFromOrder,
-    setActiveView, selectTable, confirmOrder, processPayment,
+    setActiveView, selectTable, confirmOrder, cancelEdit, processPayment, editOrder, isEditingOrder,
     addProduct, editProduct, toggleProduct, removeProduct, refetchProducts,
     addMenu, editMenu, toggleMenu, removeMenu, refetchMenus,
     refetchTables, updateStatus

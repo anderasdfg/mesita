@@ -85,7 +85,7 @@ export const updateTableOrder = async (tableId, orderData) => {
 
   const existingItems = existingOrder?.items || [];
   const newItems = orderData.items || [];
-  const mergedItems = [...existingItems, ...newItems];
+  const mergedItems = orderData.replace ? newItems : [...existingItems, ...newItems];
   const total = calculateCartTotal(mergedItems);
 
   if (existingOrder) {

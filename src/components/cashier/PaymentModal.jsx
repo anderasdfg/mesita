@@ -9,7 +9,7 @@ import { calculateCartTotal, calculateChange } from '../../utils/priceCalculator
 export const PaymentModal = React.memo(({ table, onClose }) => {
   const { processPayment } = useOrder();
   const [paymentMethod, setPaymentMethod] = useState(PAYMENT_METHOD.CASH);
-  const [amountReceived, setAmountReceived] = useState('');
+  const [amountReceived, setAmountReceived] = useState('999');
 
   const total = calculateCartTotal(table.order?.items || []);
   const change = calculateChange(total, parseFloat(amountReceived) || 0);

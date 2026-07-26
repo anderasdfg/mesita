@@ -10,7 +10,10 @@ export const MenuSelector = React.memo(({ item, onClose, onConfirm }) => {
   const [selectedEntrada, setSelectedEntrada] = useState(null);
   const [selectedSegundo, setSelectedSegundo] = useState(null);
 
-  const isMenu = item.type === PRODUCT_TYPE.MENU;
+  const isMenu = item.type === PRODUCT_TYPE.MENU || item.entradaOptions || item.entradas;
+
+  const entradas = item.entradaOptions || item.entradas || [];
+  const segundos = item.segundoOptions || item.segundos || [];
 
   const handleConfirm = () => {
     if (isMenu && (!selectedEntrada || !selectedSegundo)) {
@@ -59,7 +62,7 @@ export const MenuSelector = React.memo(({ item, onClose, onConfirm }) => {
               <div className="mb-4">
                 <label className="block font-semibold mb-2">Seleccionar Entrada:</label>
                 <div className="space-y-2">
-                  {item.entradas.map(entrada => (
+                  {entradas.map(entrada => (
                     <button
                       key={entrada.id}
                       type="button"
@@ -78,7 +81,7 @@ export const MenuSelector = React.memo(({ item, onClose, onConfirm }) => {
               <div className="mb-4">
                 <label className="block font-semibold mb-2">Seleccionar Segundo:</label>
                 <div className="space-y-2">
-                  {item.segundos.map(segundo => (
+                  {segundos.map(segundo => (
                     <button
                       key={segundo.id}
                       type="button"

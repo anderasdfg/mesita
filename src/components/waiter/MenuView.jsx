@@ -42,12 +42,17 @@ export const MenuView = React.memo(() => {
     
     // Filtrar por categoría
     if (filter === 'all') {
-      items = [...menus, ...products];
+      items = [
+        ...menus.map(menu => ({ ...menu, type: PRODUCT_TYPE.MENU })),
+        ...products.map(product => ({ ...product, type: PRODUCT_TYPE.CARTA }))
+      ];
     } else if (filter === 'menus') {
-      items = menus;
+      items = menus.map(menu => ({ ...menu, type: PRODUCT_TYPE.MENU }));
     } else {
       const category = categoryMap[filter];
-      items = products.filter(product => product.category === category);
+      items = products
+        .filter(product => product.category === category)
+        .map(product => ({ ...product, type: PRODUCT_TYPE.CARTA }));
     }
     
     // Filtrar por término de búsqueda (case-insensitive e ignora tildes)

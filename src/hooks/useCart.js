@@ -22,11 +22,16 @@ export const useCart = () => {
   }, []);
 
   const updateQuantity = useCallback((itemId, quantity) => {
-    const qty = Math.max(1, Math.min(99, parseInt(quantity, 10) || 1));
+    const qty = parseInt(quantity, 10) || 0;
+    if (qty < 1) {
+      setCartItems(prev => prev.filter(item => item.id !== itemId));
+      return;
+    }
+    const clamped = Math.min(99, Math.max(1, qty));
     setCartItems(prev =>
       prev.map(item =>
         item.id === itemId
-          ? { ...item, quantity: qty, subtotal: calculateItemSubtotal(item.unitPrice, qty) }
+          ? { ...item, quantity: clamped, subtotal: calculateItemSubtotal(item.unitPrice, clamped) }
           : item
       )
     );

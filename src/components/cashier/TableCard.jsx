@@ -63,7 +63,7 @@ export const TableCard = React.memo(({ table, onPayment }) => {
           className="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium 
                      hover:bg-green-700 active:scale-95 transition-transform min-h-[48px]"
         >
-          Cobrar
+          Pasar a caja
         </button>
       </div>
     </div>

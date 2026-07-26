@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Printer, Plus, Trash2, Clock } from 'lucide-react';
+import { Printer, Plus, Trash2, Clock, Pencil, X, ChefHat } from 'lucide-react';
 import { useOrder } from '../../context/OrderContext';
 import { Button } from '../common/Button';
 import { formatCurrency, formatElapsedTime } from '../../utils/formatters';
@@ -7,7 +7,7 @@ import { calculateCartTotal } from '../../utils/priceCalculator';
 import { PRODUCT_TYPE, TABLE_STATUS } from '../../utils/constants';
 
 export const CartView = React.memo(() => {
-  const { tables, setActiveView, selectTable, cartItems, confirmOrder, selectedTable, currentTable } = useOrder();
+  const { tables, setActiveView, selectTable, cartItems, confirmOrder, selectedTable, currentTable, updateQuantity, removeFromCart, updateNotes, editOrder, cancelEdit, isEditingOrder } = useOrder();
   const [expandedTable, setExpandedTable] = useState(null);
   const [showAllOrders, setShowAllOrders] = useState(false);
 
@@ -40,6 +40,14 @@ export const CartView = React.memo(() => {
     }, 200);
   };
 
+  const handleEditOrder = (table) => {
+    editOrder(table.id);
+  };
+
+  const handleAddMore = () => {
+    setActiveView('menu');
+  };
+
   const displayItem = (item) => {
     if (item.type === PRODUCT_TYPE.MENU) {
       return `${item.menuName} - ${item.selectedEntrada.name}, ${item.selectedSegundo.name}`;
@@ -50,14 +58,32 @@ export const CartView = React.memo(() => {
   // Si hay items en el carrito, mostrar el carrito temporal
   if (cartItems.length > 0) {
     return (
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen pb-24">
         {/* Header */}
         <div className="p-4 border-b bg-white">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Pedido Actual</h1>
-            <span className="text-lg font-medium text-gray-600">
-              Mesa {currentTable?.number || '-'}
-            </span>
+            <div>
+              <h1 className="text-2xl font-bold">
+                {isEditingOrder ? 'Editar Pedido' : 'Pedido Actual'}
+              </h1>
+              {isEditingOrder && (
+                <p className="text-xs text-blue-600 font-medium mt-1">Modo edición</p>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              {isEditingOrder && (
+                <button
+                  onClick={cancelEdit}
+                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  aria-label="Cancelar edición"
+                >
+                  <X size={20} />
+                </button>
+              )}
+              <span className="text-lg font-medium text-gray-600">
+                Mesa {currentTable?.number || '-'}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -72,19 +98,46 @@ export const CartView = React.memo(() => {
               return (
                 <div key={item.id} className="bg-white rounded-xl shadow p-4">
                   <div className="flex justify-between items-start mb-2">
-                    <div className="flex-1">
+                    <div className="flex-1 pr-2">
                       <h3 className="font-semibold text-sm">{displayName}</h3>
                       <p className="text-sm text-gray-600">{formatCurrency(item.unitPrice)} c/u</p>
                     </div>
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                      aria-label="Eliminar item"
+                    >
+                      <Trash2 size={18} />
+                    </button>
                   </div>
-                  <div className="text-lg font-semibold">Cantidad: {item.quantity}</div>
-                  {item.notes && (
-                    <div className="mt-2 p-2 bg-gray-100 rounded text-sm italic">
-                      Nota: {item.notes}
+
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-lg"
+                      >
+                        −
+                      </button>
+                      <span className="w-10 text-center font-semibold text-lg">{item.quantity}</span>
+                      <button
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        className="w-9 h-9 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold text-lg"
+                      >
+                        +
+                      </button>
                     </div>
-                  )}
-                  <div className="mt-2 text-right">
                     <span className="text-lg font-bold">{formatCurrency(item.subtotal)}</span>
+                  </div>
+
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      placeholder="Nota (ej: sin cebolla)"
+                      value={item.notes || ''}
+                      onChange={(e) => updateNotes(item.id, e.target.value)}
+                      className="w-full text-sm p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                   </div>
                 </div>
               );
@@ -95,12 +148,23 @@ export const CartView = React.memo(() => {
         {/* Fixed footer with total and button */}
         <div className="border-t bg-white shadow-lg">
           <div className="p-4">
-            <div className="bg-gray-50 rounded-xl p-4 mb-3">
+            <div className="bg-gray-50 rounded-xl p-4 mb-10">
               <div className="flex justify-between text-xl font-bold">
                 <span>Total:</span>
                 <span className="text-blue-600">{formatCurrency(total)}</span>
               </div>
             </div>
+            {isEditingOrder && (
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={handleAddMore}
+                className="w-full mb-2"
+              >
+                <Plus size={18} className="inline mr-2" />
+                Agregar más items
+              </Button>
+            )}
             <Button
               variant="success"
               size="lg"
@@ -108,7 +172,7 @@ export const CartView = React.memo(() => {
               disabled={!canConfirm}
               className="w-full"
             >
-              Confirmar Pedido
+              {isEditingOrder ? 'Guardar Cambios' : 'Confirmar Pedido'}
             </Button>
           </div>
         </div>
@@ -180,23 +244,32 @@ export const CartView = React.memo(() => {
                     </div>
 
                     {/* Acciones */}
-                    <div className="flex gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       <Button
                         variant="secondary"
                         size="sm"
                         onClick={() => handleAddItems(table)}
-                        className="flex-1 flex items-center justify-center gap-2"
+                        className="flex items-center justify-center gap-2"
                       >
                         <Plus size={18} />
-                        Agregar Items
+                        Agregar
+                      </Button>
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={() => handleEditOrder(table)}
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <Pencil size={18} />
+                        Editar
                       </Button>
                       <Button
                         variant="primary"
                         size="sm"
                         onClick={() => handlePrintKitchen(table)}
-                        className="flex-1 flex items-center justify-center gap-2"
+                        className="col-span-2 flex items-center justify-center gap-2"
                       >
-                        <Printer size={18} />
+                        <ChefHat size={18} />
                         Imprimir Cocina
                       </Button>
                     </div>
