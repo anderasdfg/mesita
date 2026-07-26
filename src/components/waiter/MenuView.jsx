@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Search, X } from 'lucide-react';
 import { useOrder } from '../../context/OrderContext';
 import { CategoryFilter } from '../common/CategoryFilter';
 import { MenuSelector } from './MenuSelector';
@@ -22,6 +22,7 @@ export const MenuView = React.memo(() => {
   const { menus, products, addToCart, setActiveView, currentTable } = useOrder();
   const [filter, setFilter] = useState('all');
   const [selectedItem, setSelectedItem] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const categories = useMemo(() => [
     { id: 'all', label: 'Todos' },
@@ -36,40 +37,97 @@ export const MenuView = React.memo(() => {
   ], []);
 
   const filteredItems = useMemo(() => {
-    if (filter === 'all') return [...menus, ...products];
-    if (filter === 'menus') return menus;
-    const category = categoryMap[filter];
-    return products.filter(product => product.category === category);
-  }, [filter, menus, products]);
+    let items = [];
+    
+    // Filtrar por categoría
+    if (filter === 'all') {
+      items = [...menus, ...products];
+    } else if (filter === 'menus') {
+      items = menus;
+    } else {
+      const category = categoryMap[filter];
+      items = products.filter(product => product.category === category);
+    }
+    
+    // Filtrar por término de búsqueda (case-insensitive)
+    if (searchTerm.trim()) {
+      const search = searchTerm.toLowerCase();
+      items = items.filter(item => {
+        const name = item.name?.toLowerCase() || '';
+        const description = item.description?.toLowerCase() || '';
+        return name.includes(search) || description.includes(search);
+      });
+    }
+    
+    return items;
+  }, [filter, menus, products, searchTerm]);
 
   return (
     <div className="pb-28 lg:pb-4">
-      <div className="p-4 pb-2 flex items-center gap-3">
-        <button
-          onClick={() => setActiveView('tables')}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-          aria-label="Volver a mesas"
-        >
-          <ArrowLeft size={24} />
-        </button>
-        <div className="flex-1">
-          <h1 className="text-2xl font-bold">Menú del Día</h1>
-          {currentTable ? (
-            <p className="text-sm text-gray-600">Mesa {currentTable.number}</p>
-          ) : (
-            <p className="text-sm text-orange-600">Sin mesa seleccionada</p>
+      <div className="p-4 pb-2">
+        <div className="flex items-center gap-3 mb-4">
+          <button
+            onClick={() => setActiveView('tables')}
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Volver a mesas"
+          >
+            <ArrowLeft size={24} />
+          </button>
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold">Menú del Día</h1>
+            {currentTable ? (
+              <p className="text-sm text-gray-600">Mesa {currentTable.number}</p>
+            ) : (
+              <p className="text-sm text-orange-600">Sin mesa seleccionada</p>
+            )}
+          </div>
+        </div>
+
+        {/* Buscador */}
+        <div className="relative mb-3">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="text-gray-400" size={20} />
+          </div>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Buscar platos o menús..."
+            className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          />
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm('')}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              aria-label="Limpiar búsqueda"
+            >
+              <X className="text-gray-400 hover:text-gray-600" size={20} />
+            </button>
           )}
         </div>
       </div>
 
       <CategoryFilter categories={categories} selected={filter} onSelect={setFilter} />
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 p-4">
-        {filteredItems.map(item => {
-          const isMenu = item.type === PRODUCT_TYPE.MENU;
-          const categoryLabel = isMenu ? 'Menú' : CARTA_CATEGORY_LABELS[item.category];
+      {filteredItems.length === 0 ? (
+        <div className="text-center py-12 px-4">
+          <p className="text-gray-500 mb-2">No se encontraron resultados</p>
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm('')}
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Limpiar búsqueda
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 p-4">
+          {filteredItems.map(item => {
+            const isMenu = item.type === PRODUCT_TYPE.MENU;
+            const categoryLabel = isMenu ? 'Menú' : CARTA_CATEGORY_LABELS[item.category];
 
-          return (
+            return (
             <div key={item.id} className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col">
               <div className="p-3 flex-1">
                 <div className="flex items-start justify-between mb-2 gap-2">
@@ -94,7 +152,8 @@ export const MenuView = React.memo(() => {
             </div>
           );
         })}
-      </div>
+        </div>
+      )}
 
       {selectedItem && (
         <MenuSelector
