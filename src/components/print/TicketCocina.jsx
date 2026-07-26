@@ -17,6 +17,32 @@ export const TicketCocina = React.memo(() => {
   const now = Date.now();
   const mesaNumber = currentTable?.number || 'Sin asignar';
 
+  const menuItems = items.filter(item => item.type === PRODUCT_TYPE.MENU);
+  const cartaItems = items.filter(item => item.type === PRODUCT_TYPE.CARTA);
+
+  const menuNames = menuItems.reduce((acc, item) => {
+    acc[item.menuName] = (acc[item.menuName] || 0) + item.quantity;
+    return acc;
+  }, {});
+  const entradas = menuItems.reduce((acc, item) => {
+    if (item.selectedEntrada?.name) {
+      acc[item.selectedEntrada.name] = (acc[item.selectedEntrada.name] || 0) + item.quantity;
+    }
+    return acc;
+  }, {});
+  const segundos = menuItems.reduce((acc, item) => {
+    if (item.selectedSegundo?.name) {
+      acc[item.selectedSegundo.name] = (acc[item.selectedSegundo.name] || 0) + item.quantity;
+    }
+    return acc;
+  }, {});
+  const cartas = cartaItems.reduce((acc, item) => {
+    acc[item.productName] = (acc[item.productName] || 0) + item.quantity;
+    return acc;
+  }, {});
+
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <div id="seccion-ticket-cocina" style={{ display: 'none' }}>
       <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '28px', marginBottom: '3mm' }}>
@@ -30,39 +56,44 @@ export const TicketCocina = React.memo(() => {
 
       <div style={{ borderTop: '4px solid #000', marginBottom: '3mm' }}></div>
 
-      {items.map((item, idx) => (
-        <div key={idx} style={{ marginBottom: '5mm', fontSize: '22px' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '22px' }}>
-            {item.quantity}x {item.type === PRODUCT_TYPE.MENU 
-              ? item.menuName 
-              : item.productName}
-          </div>
-          
-          {item.type === PRODUCT_TYPE.MENU && (
-            <div style={{ paddingLeft: '5mm', fontSize: '22px', marginTop: '1mm' }}>
-              <div>• {item.selectedEntrada?.name}</div>
-              <div>• {item.selectedSegundo?.name}</div>
+      {menuItems.length > 0 && (
+        <div style={{ marginBottom: '5mm' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '22px', marginBottom: '2mm' }}>MENU</div>
+          {Object.keys(entradas).length > 0 && (
+            <div style={{ marginBottom: '2mm' }}>
+              {Object.entries(entradas).map(([name, qty]) => (
+                <div key={name} style={{ fontSize: '22px' }}>
+                  {qty}x {name}
+                </div>
+              ))}
             </div>
           )}
-          
-          {item.notes && (
-            <div style={{ 
-              paddingLeft: '5mm', 
-              fontStyle: 'italic', 
-              fontSize: '22px',
-              marginTop: '2mm',
-              padding: '2mm',
-              border: '3px dashed #000'
-            }}>
-              {item.notes}
+          {Object.keys(segundos).length > 0 && (
+            <div>
+              {Object.entries(segundos).map(([name, qty]) => (
+                <div key={name} style={{ fontSize: '22px' }}>
+                  {qty}x {name}
+                </div>
+              ))}
             </div>
           )}
         </div>
-      ))}
+      )}
+
+      {Object.keys(cartas).length > 0 && (
+        <div style={{ marginBottom: '5mm' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '22px', marginBottom: '2mm' }}>CARTA</div>
+          {Object.entries(cartas).map(([name, qty]) => (
+            <div key={name} style={{ fontSize: '22px' }}>
+              {qty}x {name}
+            </div>
+          ))}
+        </div>
+      )}
 
       <div style={{ borderTop: '4px solid #000', marginTop: '5mm', paddingTop: '3mm' }}>
         <div style={{ textAlign: 'center', fontSize: '22px', fontWeight: 'bold' }}>
-          Total items: {items.reduce((sum, item) => sum + item.quantity, 0)}
+          Total items: {totalItems}
         </div>
       </div>
     </div>

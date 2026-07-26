@@ -26,13 +26,13 @@ export const MenuList = React.memo(({ onEdit }) => {
             <div>
               <p className="font-semibold text-gray-700 mb-1">Entradas:</p>
               <ul className="list-disc list-inside text-gray-600">
-                {menu.entradas.map(e => <li key={e.id}>{e.name}</li>)}
+                {(menu.entradaOptions || menu.entradas || []).map(e => <li key={e.id}>{e.name}</li>)}
               </ul>
             </div>
             <div>
               <p className="font-semibold text-gray-700 mb-1">Segundos:</p>
               <ul className="list-disc list-inside text-gray-600">
-                {menu.segundos.map(s => <li key={s.id}>{s.name}</li>)}
+                {(menu.segundoOptions || menu.segundos || []).map(s => <li key={s.id}>{s.name}</li>)}
               </ul>
             </div>
           </div>

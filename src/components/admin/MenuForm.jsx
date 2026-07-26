@@ -6,8 +6,14 @@ import { validateMenu } from '../../utils/validators';
 
 const emptyOption = { id: '', name: '' };
 
-const createNewOptions = (count) =>
-  Array.from({ length: count }, (_, i) => ({ ...emptyOption, tempId: `new-${Date.now()}-${i}` }));
+const createNewOptions = (count, offset = 0) =>
+  Array.from({ length: count }, (_, i) => ({ ...emptyOption, tempId: `new-${Date.now()}-${offset}-${i}` }));
+
+const padOptions = (arr, count) => {
+  const existing = arr || [];
+  const missing = Math.max(0, count - existing.length);
+  return [...existing, ...createNewOptions(missing)];
+};
 
 export const MenuForm = React.memo(({ item, onClose }) => {
   const { addMenu, editMenu } = useOrder();
@@ -27,8 +33,8 @@ export const MenuForm = React.memo(({ item, onClose }) => {
         name: item.name || '',
         price: item.price || '',
         active: item.active !== false,
-        entradas: item.entradas?.length ? item.entradas : createNewOptions(3),
-        segundos: item.segundos?.length ? item.segundos : createNewOptions(5)
+        entradas: padOptions(item.entradaOptions || item.entradas, 3),
+        segundos: padOptions(item.segundoOptions || item.segundos, 5)
       });
     }
   }, [item]);
@@ -56,25 +62,34 @@ export const MenuForm = React.memo(({ item, onClose }) => {
         .filter(opt => opt.name.trim() !== '')
         .map(opt => ({ id: opt.id || `opt-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`, name: opt.name.trim() }));
 
-    const data = {
+    const entradas = cleanOptions(formData.entradas);
+    const segundos = cleanOptions(formData.segundos);
+
+    const validationErrors = validateMenu({
       ...formData,
       price: parseFloat(formData.price),
-      entradas: cleanOptions(formData.entradas),
-      segundos: cleanOptions(formData.segundos)
-    };
-
-    const validationErrors = validateMenu(data);
+      entradas,
+      segundos
+    });
     if (validationErrors.length > 0) {
       setErrors(validationErrors);
       setSaving(false);
       return;
     }
 
+    const menuData = {
+      name: formData.name,
+      price: parseFloat(formData.price),
+      active: formData.active,
+      entradaOptions: entradas,
+      segundoOptions: segundos
+    };
+
     try {
       if (item) {
-        await editMenu(item.id, data);
+        await editMenu(item.id, menuData);
       } else {
-        await addMenu(data);
+        await addMenu(menuData);
       }
       onClose();
     } catch (err) {
