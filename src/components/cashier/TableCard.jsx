@@ -4,7 +4,7 @@ import { formatCurrency, formatElapsedTime } from '../../utils/formatters';
 import { calculateCartTotal } from '../../utils/priceCalculator';
 import { PRODUCT_TYPE } from '../../utils/constants';
 
-export const TableCard = React.memo(({ table, onPayment }) => {
+export const TableCard = React.memo(({ table, onPassToCashier }) => {
   const total = calculateCartTotal(table.order?.items || []);
   const elapsed = table.order?.timestamp ? Date.now() - table.order.timestamp : 0;
 
@@ -59,7 +59,7 @@ export const TableCard = React.memo(({ table, onPayment }) => {
         </button>
         <button
           type="button"
-          onClick={onPayment}
+          onClick={onPassToCashier}
           className="flex-1 bg-green-600 text-white py-3 rounded-lg font-medium 
                      hover:bg-green-700 active:scale-95 transition-transform min-h-[48px]"
         >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Printer, Plus, Trash2, Clock, Pencil, X, ChefHat } from 'lucide-react';
+import { Printer, Plus, Trash2, Clock, Pencil, X, ChefHat, RefreshCw } from 'lucide-react';
 import { useOrder } from '../../context/OrderContext';
 import { Button } from '../common/Button';
 import { formatCurrency, formatElapsedTime } from '../../utils/formatters';
@@ -46,6 +46,10 @@ export const CartView = React.memo(() => {
 
   const handleAddMore = () => {
     setActiveView('menu');
+  };
+
+  const handleRefresh = () => {
+    window.location.reload();
   };
 
   const displayItem = (item) => {
@@ -185,7 +189,17 @@ export const CartView = React.memo(() => {
     <div className="p-4 pb-32 lg:pb-4">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">Control de Pedidos</h1>
-        <span className="text-sm text-gray-600">{activeTables.length} mesas activas</span>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleRefresh}
+            className="p-2 bg-white rounded-lg shadow hover:bg-gray-50 transition-colors"
+            title="Actualizar (F5)"
+            aria-label="Actualizar"
+          >
+            <RefreshCw size={20} />
+          </button>
+          <span className="text-sm text-gray-600">{activeTables.length} mesas activas</span>
+        </div>
       </div>
 
       {activeTables.length === 0 ? (

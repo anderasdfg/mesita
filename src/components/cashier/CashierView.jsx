@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useOrder } from '../../context/OrderContext';
 import { TableCard } from './TableCard';
-import { PaymentModal } from './PaymentModal';
-import { TABLE_STATUS } from '../../utils/constants';
+import { TABLE_STATUS, PAYMENT_METHOD } from '../../utils/constants';
+import { calculateCartTotal } from '../../utils/priceCalculator';
 
 export const CashierView = React.memo(() => {
-  const { tables } = useOrder();
-  const [selectedTable, setSelectedTable] = useState(null);
+  const { tables, processPayment } = useOrder();
 
   const occupiedTables = tables.filter(
     table => table.status === TABLE_STATUS.OCCUPIED || table.status === TABLE_STATUS.WAITING_PAYMENT
   );
+
+  const handlePassToCashier = (table) => {
+    const total = calculateCartTotal(table.order?.items || []);
+    processPayment(table.id, PAYMENT_METHOD.CASH, total, total);
+  };
 
   return (
     <div className="p-4 pb-28 lg:pb-4 lg:p-6">
@@ -26,17 +30,10 @@ export const CashierView = React.memo(() => {
             <TableCard
               key={table.id}
               table={table}
-              onPayment={() => setSelectedTable(table)}
+              onPassToCashier={() => handlePassToCashier(table)}
             />
           ))}
         </div>
-      )}
-
-      {selectedTable && (
-        <PaymentModal
-          table={selectedTable}
-          onClose={() => setSelectedTable(null)}
-        />
       )}
     </div>
   );

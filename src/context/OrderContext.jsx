@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo, useEffect } from 'react';
 import { useMenus } from '../hooks/useMenus';
 import { useProducts } from '../hooks/useProducts';
 import { useTables } from '../hooks/useTables';
@@ -17,6 +17,12 @@ export const OrderProvider = ({ children }) => {
   const [selectedTable, setSelectedTable] = useState(null);
   const [activeView, setActiveView] = useState('tables');
   const [isEditingOrder, setIsEditingOrder] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) {
+      setActiveView('cart');
+    }
+  }, []);
 
   const selectTable = useCallback(async (tableId) => {
     setSelectedTable(tableId);
