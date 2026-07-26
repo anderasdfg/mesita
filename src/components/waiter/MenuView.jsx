@@ -10,13 +10,14 @@ import { searchIncludes } from '../../utils/stringUtils';
 const categoryMap = {
   'all': null,
   'menus': null,
-  'pollo': CARTA_CATEGORY.POLLO,
-  'carne': CARTA_CATEGORY.CARNE,
+  'pollo': CARTA_CATEGORY.POLLOS,
+  'carne': CARTA_CATEGORY.CARNES,
   'camarones': CARTA_CATEGORY.CAMARONES,
   'gallina': CARTA_CATEGORY.GALLINA,
   'pato': CARTA_CATEGORY.PATO,
   'pescado': CARTA_CATEGORY.PESCADO,
-  'bebidas': CARTA_CATEGORY.BEBIDAS
+  'bebidas': CARTA_CATEGORY.BEBIDAS,
+  'trucha': CARTA_CATEGORY.TRUCHAS
 };
 
 export const MenuView = React.memo(() => {
@@ -31,6 +32,7 @@ export const MenuView = React.memo(() => {
     { id: 'pollo', label: 'Pollo' },
     { id: 'carne', label: 'Carne' },
     { id: 'camarones', label: 'Camarones' },
+    { id: 'trucha', label: 'Truchas' },
     { id: 'gallina', label: 'Gallina' },
     { id: 'pato', label: 'Pato' },
     { id: 'pescado', label: 'Pescado' },

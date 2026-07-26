@@ -41,6 +41,36 @@ export const TicketCocina = React.memo(() => {
     return acc;
   }, {});
 
+  const menuNotes = menuItems.reduce((acc, item) => {
+    if (item.notes?.trim()) {
+      const entrada = item.selectedEntrada?.name || '';
+      const segundo = item.selectedSegundo?.name || '';
+      const note = item.notes.trim();
+      const key = `${entrada}|${segundo}|${note}`;
+      const existing = acc.find(n => n.key === key);
+      if (existing) {
+        existing.qty += item.quantity;
+      } else {
+        acc.push({ key, entrada, segundo, note, qty: item.quantity });
+      }
+    }
+    return acc;
+  }, []);
+
+  const cartaNotes = cartaItems.reduce((acc, item) => {
+    if (item.notes?.trim()) {
+      const note = item.notes.trim();
+      const key = `${item.productName}|${note}`;
+      const existing = acc.find(n => n.key === key);
+      if (existing) {
+        existing.qty += item.quantity;
+      } else {
+        acc.push({ key, product: item.productName, note, qty: item.quantity });
+      }
+    }
+    return acc;
+  }, []);
+
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -77,6 +107,21 @@ export const TicketCocina = React.memo(() => {
               ))}
             </div>
           )}
+          {menuNotes.length > 0 && (
+            <div style={{ marginTop: '3mm' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>NOTAS</div>
+              {menuNotes.map((n, idx) => (
+                <div>
+                  <div key={idx} style={{ fontSize: '15px', fontStyle: 'italic' }}>
+                    {n.qty}x {n.entrada} / {n.segundo}
+                  </div>
+                  <div key={idx} style={{ fontSize: '22px', fontStyle: 'italic' }}>
+                     {n.note}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -88,6 +133,16 @@ export const TicketCocina = React.memo(() => {
               {qty}x {name}
             </div>
           ))}
+          {cartaNotes.length > 0 && (
+            <div style={{ marginTop: '3mm' }}>
+              <div style={{ fontWeight: 'bold', fontSize: '22px' }}>NOTAS</div>
+              {cartaNotes.map((n, idx) => (
+                <div key={idx} style={{ fontSize: '22px', fontStyle: 'italic' }}>
+                  {n.qty}x {n.product}: {n.note}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
