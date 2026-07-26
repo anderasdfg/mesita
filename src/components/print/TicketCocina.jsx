@@ -23,7 +23,7 @@ export const TicketCocina = React.memo(() => {
         COMANDA - COCINA
       </div>
 
-      <div style={{ fontSize: '26px', fontWeight: 'bold', marginBottom: '3mm' }}>
+      <div style={{ fontSize: '23px', fontWeight: 'bold', marginBottom: '3mm' }}>
         <div>MESA: {mesaNumber}</div>
         <div>HORA: {formatTime(now)}</div>
       </div>
@@ -31,15 +31,15 @@ export const TicketCocina = React.memo(() => {
       <div style={{ borderTop: '4px solid #000', marginBottom: '3mm' }}></div>
 
       {items.map((item, idx) => (
-        <div key={idx} style={{ marginBottom: '5mm', fontSize: '26px' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '26px' }}>
+        <div key={idx} style={{ marginBottom: '5mm', fontSize: '23px' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '23px' }}>
             {item.quantity}x {item.type === PRODUCT_TYPE.MENU 
               ? item.menuName 
               : item.productName}
           </div>
           
           {item.type === PRODUCT_TYPE.MENU && (
-            <div style={{ paddingLeft: '5mm', fontSize: '26px', marginTop: '1mm' }}>
+            <div style={{ paddingLeft: '5mm', fontSize: '23px', marginTop: '1mm' }}>
               <div>• {item.selectedEntrada?.name}</div>
               <div>• {item.selectedSegundo?.name}</div>
             </div>
@@ -49,7 +49,7 @@ export const TicketCocina = React.memo(() => {
             <div style={{ 
               paddingLeft: '5mm', 
               fontStyle: 'italic', 
-              fontSize: '26px',
+              fontSize: '23px',
               marginTop: '2mm',
               padding: '2mm',
               border: '3px dashed #000'
@@ -61,7 +61,7 @@ export const TicketCocina = React.memo(() => {
       ))}
 
       <div style={{ borderTop: '4px solid #000', marginTop: '5mm', paddingTop: '3mm' }}>
-        <div style={{ textAlign: 'center', fontSize: '26px', fontWeight: 'bold' }}>
+        <div style={{ textAlign: 'center', fontSize: '23px', fontWeight: 'bold' }}>
           Total items: {items.reduce((sum, item) => sum + item.quantity, 0)}
         </div>
       </div>
