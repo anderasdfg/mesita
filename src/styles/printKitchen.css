@@ -1,0 +1,33 @@
+@media print {
+  /* Solo mostrar ticket de cocina cuando body tiene clase print-kitchen */
+  body.print-kitchen #seccion-ticket-cocina {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 80mm !important;
+    max-width: 80mm !important;
+    font-family: 'Arial', 'Helvetica', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    padding: 5mm 5mm 12mm 5mm !important;
+    margin: 0 !important;
+    color: #000 !important;
+    background: white !important;
+    box-sizing: border-box !important;
+  }
+
+  body.print-kitchen #seccion-ticket-cocina,
+  body.print-kitchen #seccion-ticket-cocina * {
+    visibility: visible !important;
+  }
+
+  body.print-kitchen #seccion-ticket-cocina div {
+    margin: 2mm 0 !important;
+  }
+
+  /* Ocultar ticket de comanda cuando se imprime cocina */
+  body.print-kitchen #seccion-ticket {
+    display: none !important;
+  }
+}
