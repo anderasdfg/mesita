@@ -23,16 +23,26 @@ export const OrderProvider = ({ children }) => {
   }, []);
 
   const confirmOrder = useCallback(async () => {
-    if (!selectedTable || cartItems.length === 0) return;
+    if (!selectedTable || cartItems.length === 0) {
+      console.warn('⚠️ Cannot confirm order: no table selected or empty cart');
+      return;
+    }
 
-    await updateOrder(selectedTable, {
-      items: cartItems,
-      waiter: 'Mozo 1'
-    });
-
-    clearCart();
-    setActiveView('tables');
-  }, [selectedTable, cartItems, updateOrder, clearCart]);
+    try {
+      console.log('📝 Confirming order for table:', selectedTable, 'Items:', cartItems.length);
+      await updateOrder(selectedTable, {
+        items: cartItems,
+        waiter: 'Mozo 1'
+      });
+      console.log('✅ Order confirmed successfully');
+      
+      clearCart();
+      setActiveView('tables');
+    } catch (error) {
+      console.error('❌ Error confirming order:', error);
+      alert('Error al confirmar el pedido. Por favor intenta de nuevo.');
+    }
+  }, [selectedTable, cartItems, updateOrder, clearCart, setActiveView]);
 
   const processPayment = useCallback(async (tableId, paymentMethod, amountReceived, total) => {
     const received = parseFloat(amountReceived) || 0;

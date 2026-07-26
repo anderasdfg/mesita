@@ -37,13 +37,22 @@ export const getOccupiedTables = async () => {
 };
 
 export const updateTableOrder = async (tableId, orderData) => {
+  console.log('🔄 updateTableOrder called:', { tableId, orderData });
+  
   const tables = await getTables();
+  console.log('📋 Current tables:', tables.length);
+  
   const index = tables.findIndex(table => table.id === tableId);
-  if (index === -1) throw new Error('Mesa no encontrada');
+  if (index === -1) {
+    console.error('❌ Table not found:', tableId);
+    throw new Error('Mesa no encontrada');
+  }
 
   const existingTable = tables[index];
   const existingItems = existingTable.order?.items || [];
   const newItems = orderData.items || [];
+
+  console.log('📦 Merging items:', { existing: existingItems.length, new: newItems.length });
 
   const mergedItems = [...existingItems, ...newItems];
   const total = calculateCartTotal(mergedItems);
@@ -60,7 +69,10 @@ export const updateTableOrder = async (tableId, orderData) => {
     }
   };
 
+  console.log('💾 Saving updated table:', tables[index]);
   await setItem(STORAGE_KEY, tables);
+  console.log('✅ Table order updated successfully');
+  
   return tables[index];
 };
 

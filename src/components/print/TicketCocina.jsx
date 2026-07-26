@@ -9,13 +9,6 @@ export const TicketCocina = React.memo(() => {
   // Usar items del carrito si hay, sino usar items de la mesa actual
   const items = cartItems.length > 0 ? cartItems : (currentTable?.order?.items || []);
   
-  console.log('TicketCocina render:', { 
-    cartItemsCount: cartItems.length, 
-    tableItemsCount: currentTable?.order?.items?.length || 0,
-    usingItems: items.length,
-    mesa: currentTable?.number 
-  });
-
   // Siempre renderizar, los estilos CSS controlan cuándo se muestra
   if (items.length === 0) {
     return <div id="seccion-ticket-cocina" style={{ display: 'none' }}>Sin items</div>;
